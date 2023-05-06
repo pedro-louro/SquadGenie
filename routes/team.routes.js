@@ -14,7 +14,6 @@ const Team = require("../models/Team.model")
 // }
 
 
-
 // get all the teams
 router.get("/teams/create", (req, res) => {
   res.render("teams/team-create")
