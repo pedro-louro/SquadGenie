@@ -8,8 +8,16 @@
 </head>
 <body>
     <a href="/about">About</a>
-    <a href="/login">Login</a>
-    <a href="/signup">Signup</a>
+    
+    {{#if currentUser}}
+        <form action="/logout" method="POST">
+            <a href="/teams/create">Create Team</a>
+            <button type="submit">Logout</button>
+        </form>
+    {{else}}
+        <a href="/login">Login</a>
+        <a href="/signup">Signup</a>
+    {{/if}}
 
     {{{body}}}
 </body>
