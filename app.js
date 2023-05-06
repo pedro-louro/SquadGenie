@@ -66,6 +66,10 @@ app.locals.appTitle = `Library App`;
 const indexRoutes = require("./routes/index.routes");
 app.use("/", indexRoutes);
 
+const teamsRoutes = require("./routes/team.routes");
+app.use("/", teamsRoutes);
+
+
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
 require("./error-handling")(app);
 
