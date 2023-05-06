@@ -1,1 +1,19 @@
-<h2>Hello World</h2>
+<h2>Create a Team</h2>
+
+<form action="/teams/create" method="POST">
+  <label>Team Name</label>
+  <input type="text" name="name">
+
+  <h3>Players</h3>
+
+  <label>Name</label>
+  <input type="text" name="playerName">
+
+  <label>Email</label>
+  <input type="email" name="email">
+
+  <label>Rate</label>
+  <input type="text" name="rate">
+
+  <button type="submit">Create</button>
+</form>
