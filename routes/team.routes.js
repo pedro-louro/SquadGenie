@@ -4,51 +4,40 @@ const Player = require("../models/Player.model")
 
 // const fileUpload = require("../config/cloudinary")
 
-//create middleware to only access the route if the conditions match
-//then add this function to the routes we want
-// function requireLogin(req, res, next) {
-//   if (req.session.currentUser) {
-//     next();
-//   }
-//   else{
-//     res.redirect("/login")
-//   }
-// }
+//middleware to only access the route if the conditions match
+function requireLogin(req, res, next) {
+  if (req.session.currentUser) {
+    next();
+  }
+  else{
+    res.redirect("/login")
+  }
+}
 
 
 // Get Teams/create
-router.get("/teams/create", (req, res) => {
+router.get("/teams/create",requireLogin, (req, res) => {
   res.render("teams/team-create")
 });
 
-// Create Team, player and link them
-router.post("/teams/create", async (req,res) => {
+// Create Team
+router.post("/teams/create", requireLogin, async (req,res) => {
 
-  const {name, playerName, email, rate} = req.body;
-  let player = await Player.findOne({email});
+  const {name} = req.body;
 
-  if (!player) {
-    player = await Player.create({
-      name: playerName,
-      email,
-      rate
-    })
-  }
-  // console.log(`player is: ${player}`)
-
-  const newTeam = await Team.create({name: name, players: player.id});
+  const newTeam = await Team.create({name: name});
   res.redirect(`/team/${newTeam.id}`)
 
 })
 
-// Team ID route
+// Team Details
 
-router.get("/team/:id", async (req, res) => {
+router.get("/team/:id", requireLogin, async (req, res) => {
   const getTeam = await Team.findById(req.params.id).populate("players");
   res.render("teams/team-details", getTeam)
 })
 
-router.post("/team/:id", async (req, res) => {
+router.post("/team/:id", requireLogin, async (req, res) => {
   const getTeam = await Team.findById(req.params.id).populate("players");
 
   const {playerName, email, rate} = req.body;
