@@ -2,10 +2,15 @@
 
 
 <h3>Players</h3>
-
-{{#each players}}
-  <p>Name: {{name}}  Email {{email}}</p>
+{{#if players}}
+  {{#each players}}
+  <p>Name:{{name}} Email{{email}} Rating: {{rate}}</p>
+  <hr>
 {{/each}}
+{{else}}
+<p>Add the first player</p>
+{{/if}}
+
 
 <h3>Add Players</h2>
 

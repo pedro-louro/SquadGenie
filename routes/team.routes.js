@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const Team = require("../models/Team.model")
 const Player = require("../models/Player.model")
+const User = require("../models/User.model")
 
 // const fileUpload = require("../config/cloudinary")
 
@@ -14,6 +15,12 @@ function requireLogin(req, res, next) {
   }
 }
 
+// Teams list page
+
+// router.get("/teams", requireLogin, async (req, res) => {
+//   const
+//   res.render("teams/teams-list")
+// })
 
 // Get Teams/create
 router.get("/teams/create",requireLogin, (req, res) => {
@@ -24,8 +31,13 @@ router.get("/teams/create",requireLogin, (req, res) => {
 router.post("/teams/create", requireLogin, async (req,res) => {
 
   const {name} = req.body;
+    //TODO: Fix link USER from DB to Team
 
+  // const userFromDB = await User.find({email: `${req.session.currentUser.email}`})
+  
   const newTeam = await Team.create({name: name});
+  // console.log("NEW TEAM: ")
+  // console.log(newTeam)
   res.redirect(`/team/${newTeam.id}`)
 
 })
