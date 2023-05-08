@@ -7,4 +7,9 @@ router.get("/", (req, res, next) => {
   res.render("index", {currentUser});
 });
 
+/* GET about */
+router.get("/about", (req, res, next) => {
+  res.render("about");
+})
+
 module.exports = router;
