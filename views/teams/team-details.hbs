@@ -1,15 +1,15 @@
-<h2>Team {{getTeam.name}}</h2>
+<h2>Team {{name}}</h2>
 
 
 <h3>Players</h3>
 
-{{#each getTeam.players}}
-  <p>{{id}}</p>
+{{#each players}}
+  <p>Name: {{name}}  Email {{email}}</p>
 {{/each}}
 
 <h3>Add Players</h2>
 
-<form action="/team/{{getTeam.id}}" method="POST">
+<form action="/team/{{id}}" method="POST">
   <label>Name</label>
   <input type="text" name="playerName">
 

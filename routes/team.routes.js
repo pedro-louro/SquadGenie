@@ -45,15 +45,13 @@ router.post("/teams/create", async (req,res) => {
 
 router.get("/team/:id", async (req, res) => {
   const getTeam = await Team.findById(req.params.id).populate("players");
-  console.log(getTeam.players[0])
-
-  res.render("teams/team-details", {getTeam})
+  res.render("teams/team-details", getTeam)
 })
 
 router.post("/team/:id", async (req, res) => {
   const getTeam = await Team.findById(req.params.id).populate("players");
 
-  const {name, playerName, email, rate} = req.body;
+  const {playerName, email, rate} = req.body;
   let player = await Player.findOne({email});
 
   if (!player) {
@@ -64,10 +62,12 @@ router.post("/team/:id", async (req, res) => {
     })
   }
 
-  // TODO:
-  // Update Team by adding new player
-  // Display players list in the Team details page
-  res.render("teams/team-details", {getTeam})
+  const updatedTeam = await Team.findByIdAndUpdate(getTeam.id,{
+    players:[...getTeam.players, player]
+  })
+  console.log(updatedTeam)
+  
+  res.render("teams/team-details", getTeam)
 })
 
 module.exports = router; 
