@@ -67,7 +67,7 @@ router.post("/team/:id", async (req, res) => {
   })
   console.log(updatedTeam)
   
-  res.render("teams/team-details", getTeam)
+  res.redirect(`/team/${getTeam.id}`)
 })
 
 module.exports = router; 
