@@ -1,0 +1,23 @@
+<h2>Team {{getTeam.name}}</h2>
+
+
+<h3>Players</h3>
+
+{{#each getTeam.players}}
+  <p>{{id}}</p>
+{{/each}}
+
+<h3>Add Players</h2>
+
+<form action="/team/{{getTeam.id}}" method="POST">
+  <label>Name</label>
+  <input type="text" name="playerName">
+
+  <label>Email</label>
+  <input type="email" name="email">
+
+  <label>Rate</label>
+  <input type="number" name="rate" min="1" max="10">
+
+  <button type="submit">Add Player</button>
+</form>
