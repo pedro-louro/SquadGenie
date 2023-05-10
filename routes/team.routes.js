@@ -31,11 +31,9 @@ router.get("/teams/create",requireLogin, (req, res) => {
 router.post("/teams/create", requireLogin, async (req,res) => {
 
   const {name} = req.body;
-    //TODO: Fix link USER from DB to Team
 
-  // const userFromDB = await User.find({email: `${req.session.currentUser.email}`})
-  
-  const newTeam = await Team.create({name: name});
+  const newTeam = await Team.create({name: name, owner: req.session.currentUser._id});
+
   // console.log("NEW TEAM: ")
   // console.log(newTeam)
   res.redirect(`/team/${newTeam.id}`)
