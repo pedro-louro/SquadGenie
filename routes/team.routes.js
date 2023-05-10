@@ -15,13 +15,6 @@ function requireLogin(req, res, next) {
   }
 }
 
-// Teams list page
-
-// router.get("/teams", requireLogin, async (req, res) => {
-//   const
-//   res.render("teams/teams-list")
-// })
-
 // Get Teams/create
 router.get("/teams/create",requireLogin, (req, res) => {
   res.render("teams/team-create")
@@ -67,6 +60,14 @@ router.post("/team/:id", requireLogin, async (req, res) => {
   console.log(updatedTeam)
   
   res.redirect(`/team/${getTeam.id}`)
+})
+
+// Teams list route
+router.get("/teams", requireLogin, async(req, res) => {
+  // console.log(req.session.currentUser._id)
+  const teamsList = await Team.find({owner: req.session.currentUser._id})
+  console.log(teamsList)
+  res.render("teams/teams-list", {teamsList})
 })
 
 module.exports = router; 
