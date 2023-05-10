@@ -6,3 +6,10 @@
     margin-top: 8vh;
     height: 75vh;
 }
+
+.teams-list{
+    margin-top: 5%;
+}
+.team-name-list{
+    padding: 15px;
+}

@@ -1,5 +1,13 @@
-<h2>Teams List</h2>
-
-{{#each teamsList}}
-  <p>{{name}}</p>
-{{/each}}
+<div class="container teams-list">
+  <h2>Teams</h2>
+  <div class="list-group">
+    {{#each teamsList}}
+      <div class="list-group-item list-group-item-action" aria-current="true" >
+        <span class="team-name-list">{{name}}</span>
+        <a href="/team/{{id}}"><button type="button" class="btn btn-light"><span class="bi-gear-fill"></span></button></a>
+        
+      </div> 
+      <h6>Next Games:</h5>
+    {{/each}}
+  </div>
+</div>
