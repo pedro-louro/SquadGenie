@@ -7,6 +7,27 @@
     height: 75vh;
 }
 
+.credentials {
+    margin: auto;
+    margin-top: 5rem;
+    align-items: center;
+    width: 20rem;
+    height: 20rem;
+}
+
+.forms {
+    width: 35vh;
+}
+
+.loginButton {
+    width: 15vh;
+}
+
+.errorMessage {
+    margin: auto;
+    width: 20rem;
+}
+
 .teams-list{
     margin-top: 5%;
 }
