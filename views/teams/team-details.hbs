@@ -1,16 +1,33 @@
 <h2>Team {{name}}</h2>
 
+<div class="container">
 
-<h3>Players</h3>
-{{#if players}}
-  {{#each players}}
-  <p>Name:{{name}} Email{{email}} Rating: {{rate}}</p>
-  <hr>
-{{/each}}
-{{else}}
-<p>Add the first player</p>
-{{/if}}
+<div class="accordion accordion-flush players-list" id="accordionFlushExample">
+  {{#if players}}
+    {{#each players}}
+      <div class="accordion" id="accordionExample">
+        <div class="accordion-item ">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed players-list-accordion-header" type="button" data-bs-toggle="collapse" data-bs-target="#{{id}}" aria-expanded="false" aria-controls="{{id}}">
+              {{name}}
+            </button>
+          </h2>
+          <div id="{{id}}" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+            <div class="accordion-body players-list-accordion-body">
+              <b>Email:</b> {{email}}
+              <b>Rating:</b> {{rate}}
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr>
+    {{/each}}
+  {{else}}
+    <p>Add the first player</p>
+  {{/if}}
+  </div>
 
+</div>
 
 <h3>Add Players</h2>
 
@@ -26,3 +43,5 @@
 
   <button type="submit">Add Player</button>
 </form>
+
+</div>

@@ -34,3 +34,21 @@
 .team-name-list{
     padding: 15px;
 }
+
+
+.list-group-item {
+    margin-bottom: 3%;
+}
+
+.players-list {
+    width: 40%;
+    padding: auto;
+}
+
+.players-list-accordion-header{
+    padding: 1%;
+}
+
+.players-list-accordion-body {
+    padding: 1%;
+}
