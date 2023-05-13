@@ -34,3 +34,33 @@
 .team-name-list{
     padding: 15px;
 }
+
+
+.list-group-item {
+    margin-bottom: 3%;
+}
+
+.players-list {
+    width: 40%;
+    padding: auto;
+}
+
+.players-list-accordion-header {
+    padding: 3%;
+}
+
+.players-list-accordion-body {
+    padding: 3%;
+}
+.add-players {
+    padding-top: 4%
+}
+.add-players-form {
+    padding-top: 4%;
+}
+.create-team {
+    margin-top: 4%;
+}
+.create-team h2{
+    margin-bottom: 4%;
+}

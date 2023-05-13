@@ -1,9 +1,14 @@
-<h2>Create a Team</h2>
+<div class="container create-team">
+  <h2>Create a Team</h2>
 
-<form action="/teams/create" method="POST">
-  <label>Team Name</label>
-  <input type="text" name="name">
-  <button type="submit">Create Team</button>
-</form>
+  <form action="/teams/create" method="POST">
+    <div class="form-floating mb-3">
+      <input type="text" name="name" class="form-control" id="floatingInput" placeholder="FC Barcelona">
+      <label for="floatingInput">Name</label>
+    </div>
+    <button type="submit" class="btn btn-success">Create Team</button>  
+  </form>
+</div>
+
 
 
