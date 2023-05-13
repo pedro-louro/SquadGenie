@@ -70,4 +70,9 @@ router.get("/teams", requireLogin, async(req, res) => {
   res.render("teams/teams-list", {teamsList})
 })
 
+router.post("/team/delete/:id", requireLogin, async (req, res) => {
+
+  res.redirect("/team/:id");
+})
+
 module.exports = router; 
