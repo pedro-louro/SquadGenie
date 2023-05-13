@@ -88,4 +88,8 @@ router.post("/team/generate/:id", requireLogin, async (req,res) => {
 })
 
 
+<<<<<<< HEAD
 module.exports = router;
+=======
+module.exports = router; 
+>>>>>>> 959b8102441cf628f3948278660e25f5c60a52ff
