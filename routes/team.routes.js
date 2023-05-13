@@ -2,6 +2,8 @@ const router = require("express").Router();
 const Team = require("../models/Team.model")
 const Player = require("../models/Player.model")
 const User = require("../models/User.model")
+const RandomSelector = require("../random-selection")
+
 
 // const fileUpload = require("../config/cloudinary")
 
@@ -57,7 +59,7 @@ router.post("/team/:id", requireLogin, async (req, res) => {
   const updatedTeam = await Team.findByIdAndUpdate(getTeam.id,{
     players:[...getTeam.players, player]
   })
-  console.log(updatedTeam)
+  // console.log(updatedTeam)
   
   res.redirect(`/team/${getTeam.id}`)
 })
@@ -66,8 +68,24 @@ router.post("/team/:id", requireLogin, async (req, res) => {
 router.get("/teams", requireLogin, async(req, res) => {
   // console.log(req.session.currentUser._id)
   const teamsList = await Team.find({owner: req.session.currentUser._id})
-  console.log(teamsList)
+  // console.log(teamsList)
   res.render("teams/teams-list", {teamsList})
 })
+
+//Generate random teams 
+
+router.post("/team/generate/:id", requireLogin, async (req,res) => {
+
+  const generateForm = req.body.playername;
+  console.log("PLAYERS SELECTED:")
+  console.log(generateForm)
+
+  const randomTeams = RandomSelector(generateForm)
+  console.log(randomTeams);
+
+  // TODO: show the random function results in the team-details view secong modal
+  res.redirect(`/team/${req.params.id}`)
+})
+
 
 module.exports = router; 
