@@ -1,7 +1,3 @@
-.navigator {
-    margin-left: 15vh;
-}
-
 .puppy {
     margin-top: 8vh;
     height: 75vh;
@@ -15,12 +11,26 @@
     height: 20rem;
 }
 
+.card-title {
+    margin-bottom: 4rem;
+}
+
+.card-title-sgn {
+    margin-bottom: 2rem;
+}
+
 .forms {
-    width: 35vh;
+    width: 15rem;
 }
 
 .loginButton {
-    width: 15vh;
+    margin-top: 3rem;
+    width: 5rem;
+}
+
+.createButton {
+    margin-top: 1.5rem;
+    width: 10rem;
 }
 
 .errorMessage {
