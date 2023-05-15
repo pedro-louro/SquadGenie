@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="row">
+    <div class="col align-items-center">
+      <h2 class="text-success">Team 1</h2>
+      <ul class="list-group">
+      {{#each randomTeams.finalTeamOne}}
+        <li class="list-group-item border border-success-subtle rounded">{{this}}</li>
+      {{/each}}
+      </ul>
+    </div>
+    <div class="col">
+      <h2 class="text-primary">Team 2</h2>
+      <ul class="list-group">
+      {{#each randomTeams.finalTeamTwo}}
+        <li class="list-group-item border border-primary-subtle rounded">{{this}}</li>
+      {{/each}}
+      </ul>
+    </div>
+  </div>  
+  <a href="/team/{{id}}"><button type="button" class="btn btn-secondary">
+    Back to Team
+  </button></a>
+</div>
