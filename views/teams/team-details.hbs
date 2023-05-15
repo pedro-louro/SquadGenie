@@ -1,6 +1,10 @@
 <div class="container add-players">
   <h2>{{name}}</h2>
 
+  <form action="/team/{{_id}}/delete" method="POST">
+    <button type="submit">Delete Team</button>
+  </form>
+
   <div class="row add-players-form">
     <div class="col-sm">
       <h4>Players</h4>
@@ -17,6 +21,10 @@
                 <div class="accordion-body players-list-accordion-body">
                   <b>Email:</b> {{email}}
                   <b>Rating:</b> {{rate}}
+
+                  <form action="/team/{{../_id}}/delete-player/{{_id}}" method="POST">
+                    <button type="submit">Delete</button>
+                  </form>
                 </div>
               </div>
             </div>

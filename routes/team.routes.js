@@ -64,13 +64,30 @@ router.post("/team/:id", requireLogin, async (req, res) => {
   res.redirect(`/team/${getTeam.id}`)
 })
 
-// Deleting players
-router.post("/team/delete/:id", async (req, res) => {
-  const {teamId, playerId} = req.params;
+// Deleting players from the team without deleting from db
+router.post("/team/:id/delete-player/:playerId", requireLogin, async (req, res) => {
+  const teamId = req.params.id;
+  const playerId = req.params.playerId;
 
-  const team = await Team.findById(teamId);
-  
-  res.redirect("/team/:id");
+  // find the team needed
+  const team = await Team.findById(teamId).populate("players");
+
+  // remove the player from the team using .filter
+  team.players = team.players.filter(player => player.id !== playerId);
+
+  // save the updated team
+  await team.save();
+
+  res.redirect(`/team/${teamId}`)
+})
+
+// Delete a Team
+router.post("/team/:id/delete", requireLogin, async (req,res) => {
+  const teamId = req.params.id;
+
+  await Team.findByIdAndDelete(teamId);
+
+  res.redirect("/teams");
 })
 
 // Teams list route
