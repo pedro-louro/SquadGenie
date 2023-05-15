@@ -3,6 +3,10 @@
     height: 75vh;
 }
 
+.loginHome {
+    margin-right: 1rem;
+}
+
 .credentials {
     margin: auto;
     margin-top: 5rem;
