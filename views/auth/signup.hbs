@@ -1,18 +1,27 @@
-<h1>Signup</h1>
+<div class="card text-center mb-3 credentials">
+    <div class="card-body">
+        <form  action="/signup" method="POST" class="frm">
+            <h5 class="card-title-sgn">Signup</h5>
 
-<form action="/signup" method="POST">
-    <label for="">Username</label>
-    <input type="text" name="username"/>
+            <div class="row mb-3 forms">
+                <input type="text" class="form-control" placeholder="Username" aria-label="Username" name="username"/>
+            </div>
 
-    <label for="">Email</label>
-    <input type="email" name="email">
+            <div class="row mb-3 forms">
+                <input type="email" class="form-control" placeholder="Email" aria-label="Email" name="email"/>
+            </div>
 
-    <label for="">Password</label>
-    <input type="password" name="password"/>
+            <div class="row mb-3 forms">
+                <input type="password" class="form-control" placeholder="Password" aria-label="Password" name="password"/>
+            </div>
 
-    <button class="btn btn-outline-secondary" type="submit">Create Account</button>
-</form>
+            <button class="btn btn-outline-secondary createButton" type="submit">Create Account</button>
+        </form>
+    </div>
+</div>
 
 {{#if errorMessage}}
-    <div style="color: red">{{errorMessage}}</div>
+    <div class="alert alert-danger errorMessage" role="alert">
+        {{errorMessage}}
+    </div>
 {{/if}}
