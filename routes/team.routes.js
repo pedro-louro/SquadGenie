@@ -64,6 +64,15 @@ router.post("/team/:id", requireLogin, async (req, res) => {
   res.redirect(`/team/${getTeam.id}`)
 })
 
+// Deleting players
+router.post("/team/delete/:id", async (req, res) => {
+  const {teamId, playerId} = req.params;
+
+  const team = await Team.findById(teamId);
+  
+  res.redirect("/team/:id");
+})
+
 // Teams list route
 router.get("/teams", requireLogin, async(req, res) => {
   // console.log(req.session.currentUser._id)
@@ -87,9 +96,5 @@ router.post("/team/generate/:id", requireLogin, async (req,res) => {
   res.redirect(`/team/${req.params.id}`)
 })
 
-
-<<<<<<< HEAD
 module.exports = router;
-=======
-module.exports = router; 
->>>>>>> 959b8102441cf628f3948278660e25f5c60a52ff
+
