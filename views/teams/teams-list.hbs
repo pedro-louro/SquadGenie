@@ -1,11 +1,58 @@
 <div class="container teams-list">
-  <h2>Teams</h2>
-  <div class="list-group">
+  <div class="row">
+    <div class="col"> <h4>Team</h4></div>
+    <div class="col"><h4>Next Game</h4></div>
+    <div class="col"></div>
+    <div class="col"></div>
+  </div>
+  
+  <div class="row">
     {{#each teamsList}}
-      <div class="list-group-item list-group-item-action border rounded" aria-current="true" >
-        <span class="team-name-list">{{name}}</span>
-        <a href="/team/{{id}}"><button type="button" class="btn btn-light"><span class="bi-gear-fill"></span></button></a>
-      </div> 
+        <ul class="list-group list-group-horizontal-md">
+          <li class="list-group-item col list-group-item-action list-group-light">{{name}}</li>
+          <li class="list-group-item col list-group-item-action list-group-item-light">17/05/2023</li>
+          <li class="list-group-item col list-group-item-action list-group-item-light">
+            <a href="/team/{{id}}"><button type="button" class="btn btn-info"><span class="bi-gear-fill"></span>  Manage Team</button></a>
+          </li>
+          <li class="list-group-item col list-group-item-action list-group-item-light">
+            <form action="/team/{{_id}}/delete" method="POST">
+              <a href="/team/{{id}}"><button type="submit" class="btn btn-danger"><span class="bi-trash"></span>  Delete Team</button></a>
+            </form>
+          </li>
+      </ul>
     {{/each}}
   </div>
+
 </div>
+
+<div class="container-fluid d-flex flex-row-reverse create-team-list fixed-bottom">
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-success p-2 create-team-button fs-5" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+    <span class="bi-plus-circle"></span> Create Team
+  </button>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">Create Team</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form action="/teams/create" method="POST">
+      <div class="modal-body">
+          <div class="form-floating mb-3">
+            <input type="text" name="name" class="form-control" id="floatingInput" placeholder="FC Barcelona">
+            <label for="floatingInput">Name</label>
+          </div>  
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-success">Create Team</button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+

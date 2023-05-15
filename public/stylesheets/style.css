@@ -64,3 +64,10 @@
 .create-team h2{
     margin-bottom: 4%;
 }
+.create-team-list {
+    padding-bottom: 3%;
+    padding-right: 2%;
+}
+.create-team-button {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}

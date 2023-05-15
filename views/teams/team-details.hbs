@@ -2,7 +2,7 @@
   <h2>{{name}}</h2>
 
   <form action="/team/{{_id}}/delete" method="POST">
-    <button type="submit">Delete Team</button>
+    <a href="/team/{{id}}"><button type="submit" class="btn btn-danger"><span class="bi-trash"></span>  Delete Team</button></a>
   </form>
 
   <div class="row add-players-form">
