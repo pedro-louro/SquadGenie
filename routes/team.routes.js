@@ -112,6 +112,11 @@ router.post("/team/generate/:id", requireLogin, async (req,res) => {
   res.render(`teams/random-team`, {randomTeams, id: req.params.id})
 })
 
+// Schedule games
+router.get("/teams/mygames", requireLogin, async (req, res) => {
+  const teamsList = await Team.find({owner: req.session.currentUser._id})
+  res.render("teams/team-schedule", {teamsList});
+})
 
 
 module.exports = router;
