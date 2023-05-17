@@ -4,7 +4,11 @@
       <h2 class="text-success">Team 1</h2>
       <ul class="list-group">
       {{#each randomTeams.finalTeamOne}}
-        <li class="list-group-item border border-success-subtle rounded">{{this}}</li>
+        {{#if this.name}}
+          <li class="list-group-item border border-primary-subtle rounded">{{this.name}}</li>
+        {{else}}
+          Team Rate: {{this}}
+        {{/if}}
       {{/each}}
       </ul>
     </div>
@@ -12,7 +16,11 @@
       <h2 class="text-primary">Team 2</h2>
       <ul class="list-group">
       {{#each randomTeams.finalTeamTwo}}
-        <li class="list-group-item border border-primary-subtle rounded">{{this}}</li>
+        {{#if this.name}}
+          <li class="list-group-item border border-primary-subtle rounded">{{this.name}}</li>
+        {{else}}
+          Team Rate: {{this}}
+        {{/if}}
       {{/each}}
       </ul>
     </div>

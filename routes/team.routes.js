@@ -105,10 +105,9 @@ router.post("/team/generate/:id", requireLogin, async (req,res) => {
   console.log("PLAYERS SELECTED:")
   console.log(generateForm)
 
-  const randomTeams = RandomSelector(generateForm)
-  console.log(randomTeams);
+  const randomTeams = await RandomSelector(generateForm)
+  console.log(`Random Teams: ${randomTeams}`);
 
-  // TODO: show the random function results in the team-details view secong modal
   res.render(`teams/random-team`, {randomTeams, id: req.params.id})
 })
 
