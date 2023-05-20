@@ -9,16 +9,16 @@
   <div class="row">
     {{#each teamsList}}
         <ul class="list-group list-group-horizontal-md">
-          <li class="list-group-item col list-group-item-action list-group-light">{{name}}</li>
+          <li class="list-group-item col list-group-item-action list-group-light">
+            <div>
+              {{name}} 
+              <a href="/team/{{id}}"><button type="button" class="btn btn-info"><span class="bi-gear-fill"></span>  Manage Team</button></a>
+              <form action="/team/{{_id}}/delete" method="POST">
+                <a href="/team/{{id}}"><button type="submit" class="btn btn-danger"><span class="bi-trash"></span>  Delete Team</button></a>
+              </form>
+            </div>
+            </li>
           <li class="list-group-item col list-group-item-action list-group-item-light">17/05/2023</li>
-          <li class="list-group-item col list-group-item-action list-group-item-light">
-            <a href="/team/{{id}}"><button type="button" class="btn btn-info"><span class="bi-gear-fill"></span>  Manage Team</button></a>
-          </li>
-          <li class="list-group-item col list-group-item-action list-group-item-light">
-            <form action="/team/{{_id}}/delete" method="POST">
-              <a href="/team/{{id}}"><button type="submit" class="btn btn-danger"><span class="bi-trash"></span>  Delete Team</button></a>
-            </form>
-          </li>
       </ul>
     {{/each}}
   </div>
