@@ -3,8 +3,8 @@ const Team = require('../models/Team.model');
 const Player = require('../models/Player.model');
 const User = require('../models/User.model');
 const RandomSelector = require('../random-selection');
-const flatpickr = require("flatpickr");
-const Game = require("../models/Game.model");
+const flatpickr = require('flatpickr');
+const Game = require('../models/Game.model');
 
 // const fileUpload = require("../config/cloudinary")
 
@@ -117,7 +117,6 @@ router.post('/team/generate/:id', requireLogin, async (req, res) => {
 });
 
 // Save random random teams in db
-
 router.post('/team/:id/starred', requireLogin, async (req, res) => {
   const {
     playerNameOne,
@@ -167,29 +166,42 @@ router.post('/team/:id/starred', requireLogin, async (req, res) => {
   res.redirect(`/team/${req.params.id}`);
 });
 
+//remove starred team
+router.post('/team/:id/removeStarred', requireLogin, async (req, res) => {
+  const getTeam = await Team.findById(req.params.id);
+  const removeStarred = getTeam.starred.filter(
+    team => team.id !== Number(req.body.startedTeamID)
+  );
+
+  const updateTeam = await Team.findByIdAndUpdate(req.params.id, {
+    starred: removeStarred
+  });
+  res.redirect(`/team/${req.params.id}`);
+});
+
 // Schedule games
-router.get("/teams/schedule", requireLogin, async (req, res) => {
-  const teamsList = await Team.find({owner: req.session.currentUser._id})
-  res.render("teams/team-schedule", {teamsList});
-})
+router.get('/teams/schedule', requireLogin, async (req, res) => {
+  const teamsList = await Team.find({ owner: req.session.currentUser._id });
+  res.render('teams/team-schedule', { teamsList });
+});
 
-router.post("/teams/save-date", requireLogin, async (req, res) => {
-    const { teamId, selectedDate } = req.body;
+router.post('/teams/save-date', requireLogin, async (req, res) => {
+  const { teamId, selectedDate } = req.body;
 
-    const team = await Team.findById(teamId);
-    team.nextGameDate = selectedDate;
+  const team = await Team.findById(teamId);
+  team.nextGameDate = selectedDate;
 
-    const newGame = new Game({
-      scheduledDate: selectedDate,
-    });
+  const newGame = new Game({
+    scheduledDate: selectedDate
+  });
 
-    team.games.push(newGame);
-    await team.save();
+  team.games.push(newGame);
+  await team.save();
 
-    const updatedTeam = await Team.findById(teamId);
+  const updatedTeam = await Team.findById(teamId);
 
-    res.redirect("/teams/schedule");
-    // TO DO: when we redirect, instead of the placeholder should show the saved date
+  res.redirect('/teams/schedule');
+  // TO DO: when we redirect, instead of the placeholder should show the saved date
 });
 
 module.exports = router;

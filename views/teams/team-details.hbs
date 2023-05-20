@@ -123,8 +123,11 @@
                     {{name}}  
                   {{/each}}
                   <hr>
-                  {{!-- TODO: create route to remove starred --}}
-                  <form action="/team/" method="POST"><button type="submit" class="btn btn-light"><span class="bi-trash"></span></button></form>
+                  {{!-- TODO: create route to remove star --}}
+                  <form action="/team/{{../_id}}/removeStarred" method="POST">
+                    <input type="text" hidden name="startedTeamID" value="{{id}}">
+                    <button type="submit" class="btn btn-light"><span class="bi-trash"></span></button>
+                  </form>
                   </div>
                 </div>
             </div>
