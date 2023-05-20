@@ -9,14 +9,15 @@
   
   <div class="row">
     {{#each teamsList}}
-      <div class="card schedule-cards" style="width: 22rem; height: 18rem;">
+      <div class="card schedule-cards">
         <div class="card-body cardInsideSchedule">
-          <h5 class="card-title">{{name}}</h5>
+          <h5 class="card-title teamName">{{name}}</h5>
           <!-- class="input-group flatpickr" -->
-          <div class="">
+          <div class="input-group teamSchedule">
             <input type="text" class="form-control datepicker-input" placeholder="Select Date" value="{{selectedDate}}" required>
+            <i class="bi bi-save2 btn btn-warning save-date secondButton" data-teamId="{{_id}}"></i>
+            <!-- <button class="btn btn-warning save-date secondButton" data-teamId="{{_id}}">Save</button> -->
           </div>
-          <button class="btn btn-warning save-date secondButton" data-teamId="{{_id}}">Save</button>
           <a href="" class="card-link btn btn-warning secondButton" role="button">Game Info</a>
         </div>
       </div>

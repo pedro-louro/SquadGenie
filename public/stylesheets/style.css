@@ -87,6 +87,11 @@
 }
 
 .schedule-cards {
+    background-color: rgb(248, 249, 250);
+    border: none;
+    box-shadow: 2px 2px rgb(222, 226, 230);
+    width: 22rem;
+    height: 15rem;
     margin: 1rem;
     align-items: center;
 }
@@ -96,13 +101,17 @@
     border: none;
 }
 
-#save {
-    margin-left: 1rem;
-}
-
 .cardInsideSchedule {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.teamName {
+    margin-bottom: 3rem;
+}
+
+.teamSchedule {
+    margin-bottom: 2rem;
 }
