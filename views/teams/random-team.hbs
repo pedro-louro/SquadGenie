@@ -28,4 +28,28 @@
   <a href="/team/{{id}}"><button type="button" class="btn btn-secondary">
     Back to Team
   </button></a>
+
+
+  <form action="/team/{{id}}/starred" method="POST">
+    {{#each randomTeams.finalTeamOne}}
+      {{#if this.name}}
+        <input hidden type="textarea" name="playerNameOne" value="{{this.name}}">
+        <input hidden type="textarea" name="emailOne" value="{{this.email}}">
+        <input hidden type="textarea" name="rateOne" value="{{this.rate}}">
+      {{else}}
+        <input hidden type="textarea" name="teamOneRate" value="{{this}}">
+      {{/if}}
+    {{/each}}
+    {{#each randomTeams.finalTeamTwo}}
+      {{#if this.name}}
+        <input hidden type="textarea" name="playerNameTwo" value="{{this.name}}">
+        <input hidden type="textarea" name="emailTwo" value="{{this.email}}">
+        <input hidden type="textarea" name="rateTwo" value="{{this.rate}}">
+      {{else}}
+        <input hidden type="textarea" name="teamOneTwo" value="{{this}}">
+      {{/if}}
+    {{/each}}
+    <button type="submit">Save team</button>
+  </form>
+
 </div>

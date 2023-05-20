@@ -59,6 +59,7 @@
     </div>
   </div>
 
+  {{!-- Button and Modal to Generate Random teams --}}
   <!-- Button trigger modal -->
   <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
     Generate Random Teams
@@ -86,6 +87,49 @@
             </div>
           </form>
         </div>
+      </div>
+    </div>
+  </div>
+
+  {{!-- Show stared teams --}}
+  <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+    Starred Teams
+  </button>
+
+<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasExampleLabel">Starred Teams</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <div>
+        {{#each starred}}
+          <div class="accordion" id="accordionExample">
+            <div class="accordion-item ">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed players-list-accordion-header" type="button" data-bs-toggle="collapse" data-bs-target="#{{id}}" aria-expanded="false" aria-controls="{{this}}">
+                See player
+                </button>
+              </h2>
+              <div id="{{id}}" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                <div class="accordion-body players-list-accordion-body">
+                  <h6>Team one:</h6>
+                  {{#each OneTeam}}
+                    {{name}}  
+                  {{/each}}
+                  <hr>
+                  <h6>Team Two:</h6>
+                  {{#each TwoTeam}}
+                    {{name}}  
+                  {{/each}}
+                  <hr>
+                  {{!-- TODO: create route to remove starred --}}
+                  <form action="/team/" method="POST"><button type="submit" class="btn btn-light"><span class="bi-trash"></span></button></form>
+                  </div>
+                </div>
+            </div>
+          </div>
+        {{/each}}
       </div>
     </div>
   </div>

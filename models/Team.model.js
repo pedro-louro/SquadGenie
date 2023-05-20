@@ -1,18 +1,19 @@
-const {Schema, model} = require("mongoose");
+const { Schema, model } = require('mongoose');
 
 const teamSchema = new Schema(
   {
-  name: String,
-  players: [{type: Schema.Types.ObjectId, ref: "Player"}],
-  games: Array,
-  owner: {type: Schema.Types.ObjectId, ref: "User"},
+    name: String,
+    players: [{ type: Schema.Types.ObjectId, ref: 'Player' }],
+    games: Array,
+    starred: Array,
+    owner: { type: Schema.Types.ObjectId, ref: 'User' }
   },
   {
-    timestamps: true,
+    timestamps: true
   }
 );
 
-const teamModel = model("Team", teamSchema);
+const teamModel = model('Team', teamSchema);
 
 module.exports = teamModel;
 //
