@@ -1,14 +1,15 @@
-<div class="container create-team">
-  <h2>Create a Team</h2>
-
-  <form action="/teams/create" method="POST">
-    <div class="form-floating mb-3">
-      <input type="text" name="name" class="form-control" id="floatingInput" placeholder="FC Barcelona">
-      <label for="floatingInput">Name</label>
-    </div>
-    <button type="submit" class="btn btn-success">Create Team</button>  
-  </form>
+<div class="card text-center mb-3 create-team credentials">
+  <div class="card-body">
+    <form action="/teams/create" method="POST">
+      <input type="text" class="form-control" placeholder="Name" aria-label="Name" name="name">
+      <button type="submit" class="btn btn-warning">Create Team</button>  
+    </form>
+  </div>
 </div>
 
-
-
+<!--
+  <div class="form-floating mb-3">
+    <input type="text" name="name" class="form-control" id="floatingInput">
+    <label for="floatingInput">Name</label>
+  </div>
+-->

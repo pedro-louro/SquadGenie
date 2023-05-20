@@ -1,3 +1,7 @@
+.bckgrd {
+    background-color: rgb(255, 243, 205);
+}
+
 .puppy {
     margin-top: 8vh;
     height: 75vh;
@@ -8,6 +12,9 @@
 }
 
 .credentials {
+    background-color: rgb(248, 249, 250);
+    border: none;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
     margin: auto;
     margin-top: 5rem;
     align-items: center;
@@ -15,7 +22,15 @@
     height: 20rem;
 }
 
-.card-title {
+.crdtls {
+    margin-top: 3.5rem;
+}
+
+.bckgrd {
+    background-color: rgb(255, 243, 205);
+}
+
+.cardTitle {
     margin-bottom: 4rem;
 }
 
@@ -87,10 +102,31 @@
 }
 
 .schedule-cards {
+    background-color: rgb(248, 249, 250);
+    border: none;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+    width: 22rem;
+    height: 15rem;
     margin: 1rem;
+    align-items: center;
 }
 
 .secondButton {
     background-color: rgb(255, 243, 205);
     border: none;
+}
+
+.cardInsideSchedule {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.teamName {
+    margin-bottom: 3rem;
+}
+
+.teamSchedule {
+    margin-bottom: 2rem;
 }

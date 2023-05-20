@@ -1,17 +1,24 @@
 <div class="card text-center mb-3 credentials">
     <div class="card-body">
         <form  action="/login" method="POST" class="frm">
-            <h5 class="card-title">Login</h5>
+            <!-- <h5 class="card-title cardTitle">Login</h5> -->
+            <div class="crdtls">
+                <div class="input-group mb-3">
+                    <span class="input-group-text bckgrd" id="basic-addon1">
+                        <i class="bi bi-person"></i>
+                    </span>
+                    <input type="text" class="form-control" placeholder="Username" aria-label="Username" name="username">
+                </div>
 
-            <div class="row mb-3 forms">
-                <input type="text" class="form-control" placeholder="Username" aria-label="Username" name="username"/>
+                <div class="input-group mb-3">
+                    <span class="input-group-text bckgrd" id="basic-addon1">
+                        <i class="bi bi-lock"></i>
+                    </span>
+                    <input type="password" class="form-control" placeholder="Password" aria-label="Password" name="password"/>
+                </div>
             </div>
 
-            <div class="row mb-3 forms">
-                <input type="password" class="form-control" placeholder="Password" aria-label="Password" name="password"/>
-            </div>
-
-            <button class="btn btn-outline-secondary loginButton" type="submit">Login</button>
+            <button class="btn btn-warning loginButton" type="submit">Login</button>
         </form>
     </div>
 </div>
