@@ -3,6 +3,8 @@ const Team = require('../models/Team.model');
 const Player = require('../models/Player.model');
 const User = require('../models/User.model');
 const RandomSelector = require('../random-selection');
+const flatpickr = require("flatpickr");
+const Game = require("../models/Game.model");
 
 // const fileUpload = require("../config/cloudinary")
 
@@ -166,9 +168,28 @@ router.post('/team/:id/starred', requireLogin, async (req, res) => {
 });
 
 // Schedule games
-router.get('/teams/mygames', requireLogin, async (req, res) => {
-  const teamsList = await Team.find({ owner: req.session.currentUser._id });
-  res.render('teams/team-schedule', { teamsList });
+router.get("/teams/schedule", requireLogin, async (req, res) => {
+  const teamsList = await Team.find({owner: req.session.currentUser._id})
+  res.render("teams/team-schedule", {teamsList});
+})
+
+router.post("/teams/save-date", requireLogin, async (req, res) => {
+    const { teamId, selectedDate } = req.body;
+
+    const team = await Team.findById(teamId);
+    team.nextGameDate = selectedDate;
+
+    const newGame = new Game({
+      scheduledDate: selectedDate,
+    });
+
+    team.games.push(newGame);
+    await team.save();
+
+    const updatedTeam = await Team.findById(teamId);
+
+    res.redirect("/teams/schedule");
+    // TO DO: when we redirect, instead of the placeholder should show the saved date
 });
 
 module.exports = router;
