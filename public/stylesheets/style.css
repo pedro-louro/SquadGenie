@@ -8,11 +8,22 @@
 }
 
 .credentials {
+    background-color: rgb(248, 249, 250);
+    border: none;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
     margin: auto;
     margin-top: 5rem;
     align-items: center;
     width: 20rem;
     height: 20rem;
+}
+
+.crdtls {
+    margin-top: 3.5rem;
+}
+
+.bckgrd {
+    background-color: rgb(255, 243, 205);
 }
 
 .cardTitle {
@@ -89,7 +100,7 @@
 .schedule-cards {
     background-color: rgb(248, 249, 250);
     border: none;
-    box-shadow: 2px 2px rgb(222, 226, 230);
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
     width: 22rem;
     height: 15rem;
     margin: 1rem;

@@ -1,21 +1,30 @@
 <div class="card text-center mb-3 credentials">
-    <div class="card-body">
+    <div class="card-body crdtls">
         <form  action="/signup" method="POST" class="frm">
-            <h5 class="card-title-sgn">Signup</h5>
+            <!-- <h5 class="card-title-sgn">Signup</h5> -->
 
-            <div class="row mb-3 forms">
-                <input type="text" class="form-control" placeholder="Username" aria-label="Username" name="username"/>
+            <div class="input-group mb-3">
+                <span class="input-group-text bckgrd" id="basic-addon1">
+                    <i class="bi bi-person"></i>
+                </span>
+                <input type="text" class="form-control" placeholder="Username" aria-label="Username" name="username">
             </div>
 
-            <div class="row mb-3 forms">
+            <div class="input-group mb-3">
+                <span class="input-group-text bckgrd" id="basic-addon1">
+                    <i class="bi bi-mailbox"></i>
+                </span>
                 <input type="email" class="form-control" placeholder="Email" aria-label="Email" name="email"/>
             </div>
 
-            <div class="row mb-3 forms">
+            <div class="input-group mb-3">
+                <span class="input-group-text bckgrd" id="basic-addon1">
+                    <i class="bi bi-lock"></i>
+                </span>
                 <input type="password" class="form-control" placeholder="Password" aria-label="Password" name="password"/>
             </div>
 
-            <button class="btn btn-outline-secondary createButton" type="submit">Create Account</button>
+            <button class="btn btn-warning" type="submit">Signup</button>
         </form>
     </div>
 </div>
