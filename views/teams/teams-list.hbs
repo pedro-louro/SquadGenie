@@ -1,25 +1,18 @@
-<div class="container teams-list">
-  <div class="row">
-    <div class="col"> <h4>Team</h4></div>
-    <div class="col"><h4>Next Game</h4></div>
-    <div class="col"></div>
-    <div class="col"></div>
-  </div>
+<div class="container teams-list ">
   
-  <div class="row">
+  <div class="row d-flex flex-column align-content-center justify-content-center">
     {{#each teamsList}}
-        <ul class="list-group list-group-horizontal-md">
-          <li class="list-group-item col list-group-item-action list-group-light">{{name}}</li>
-          <li class="list-group-item col list-group-item-action list-group-item-light">17/05/2023</li>
-          <li class="list-group-item col list-group-item-action list-group-item-light">
-            <a href="/team/{{id}}"><button type="button" class="btn btn-info"><span class="bi-gear-fill"></span>  Manage Team</button></a>
-          </li>
-          <li class="list-group-item col list-group-item-action list-group-item-light">
-            <form action="/team/{{_id}}/delete" method="POST">
-              <a href="/team/{{id}}"><button type="submit" class="btn btn-danger"><span class="bi-trash"></span>  Delete Team</button></a>
+      <div class="shadow-sm border-light rounded card w-75 list-group list-group-horizontal-md list-group-item-action mb-3">
+          <div class="card-body d-inline-flex p-5 w-100 flex-row- justify-content-around align-items-center">
+            <h3 class="card-title w-25 m-0 d-inline flex-grow-2">{{name}}</h3>
+            <a href="/game/gameID" class="btn btn-light"><span class="bi-calendar3"></span> Next Game</span></a>
+            <a href="/game/gameID" class="btn btn-light"><span class="bi-calendar-plus"></span> Schedule Game</span></a>
+            <a href="/team/{{id}}"><button type="button" class="btn secondButton btn-warning"><span class="bi-gear-fill"></span> Manage</button></a>
+            <form action="/team/{{_id}}/delete" class="d-inline"method="POST">
+              <a href="/team/{{id}}"><button type="submit" class="btn btn-danger"><span class="bi-trash"></span></button></a>
             </form>
-          </li>
-      </ul>
+          </div>
+      </div>
     {{/each}}
   </div>
 

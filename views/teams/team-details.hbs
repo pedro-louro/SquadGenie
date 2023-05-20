@@ -1,12 +1,112 @@
 <div class="container add-players">
   <h2>{{name}}</h2>
 
-  <form action="/team/{{_id}}/delete" method="POST">
-    <a href="/team/{{id}}"><button type="submit" class="btn btn-danger"><span class="bi-trash"></span>  Delete Team</button></a>
-  </form>
+  <div class="player-details-buttons-list w-50 d-flex flex-row- justify-content-start align-items-center">
+    {{!-- Button and Modal to Generate Random teams --}}
+    <!-- Button trigger modal -->
+    <button type="button" class="btn secondButton btn-warning me-3 bi-shuffle" data-bs-toggle="modal" data-bs-target="#exampleModal">
+       Shuffle Teams
+    </button>
+    <!-- Modal Generate Random Team-->
+    <div class="modal fade" data-bs-backdrop="static" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Generate Random Teams</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            Select the players
+            <form action="/team/generate/{{id}}" method="POST">
 
-  {{!-- Form to show players of the team --}}
-  <div class="row add-players-form">
+              {{#each players}}
+                <input type="checkbox" name="playername" value="{{id}}" class="btn-check" id="btn-check-outlined-{{name}}" autocomplete="off">
+                <label class="btn btn-outline-primary" for="btn-check-outlined-{{name}}">{{name}}</label><br>
+              {{/each}}
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal">Generate Teams</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {{!--Show stared teams --}}
+    <button class="btn secondButton btn-warning me-3 bi-star" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+      Saved Teams
+    </button>
+
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasExampleLabel">Starred Teams</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
+        <div>
+            {{#each starred}}
+              <div class="accordion" id="accordionExample">
+                <div class="accordion-item ">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button collapsed players-list-accordion-header" type="button" data-bs-toggle="collapse" data-bs-target="#{{id}}" aria-expanded="false" aria-controls="{{this}}">
+                    See player
+                    </button>
+                  </h2>
+                  <div id="{{id}}" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                    <div class="accordion-body players-list-accordion-body">
+                      <h6>Team one:</h6>
+                      {{#each OneTeam}}
+                        {{name}}  
+                      {{/each}}
+                      <hr>
+                      <h6>Team Two:</h6>
+                      {{#each TwoTeam}}
+                        {{name}}  
+                      {{/each}}
+                      <hr>
+                      <form action="/team/{{../_id}}/removeStarred" method="POST">
+                        <input type="text" hidden name="startedTeamID" value="{{id}}">
+                        <button type="submit" class="btn btn-light"><span class="bi-trash"></span></button>
+                      </form>
+                      </div>
+                    </div>
+                </div>
+              </div>
+            {{/each}}
+          </div>
+        </div>
+    </div>
+    {{!--ENDstared teams --}}
+    
+    <form action="/team/{{_id}}/delete" method="POST">
+      <a href="/team/{{id}}"><button type="submit" class="btn btn-danger"><span class="bi-trash"></span></button></a>
+    </form>   
+  </div>
+
+  {{!-- Show players of the team --}}
+  <h4>Players</h4>
+
+  <div class="row gap-3">
+    {{#if players}}
+      {{#each players}}
+      <div class="card" style="width: 18rem;">
+        <div class="card-body" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+        <h5 class="card-title">{{name}}</h5>
+          <b class="card-text">Email:</b> {{email}}
+          <b>Rating:</b> {{rate}}
+          <form action="/team/{{../_id}}/delete-player/{{_id}}" method="POST">
+            <button type="submit" class="btn btn-danger bi-trash"></button>
+          </form>
+      </div>
+    </div>
+      {{/each}}
+    {{else}}
+      <p>Add the first player</p>
+    {{/if}}
+  </div>
+
+  {{!-- <div class="row add-players-form">
     <div class="col-sm">
       <h4>Players</h4>
       {{#if players}}
@@ -34,9 +134,9 @@
       {{else}}
         <p>Add the first player</p>
       {{/if}}
-    </div>
+    </div> --}}
 
-    <div class="col-sm">
+    {{!-- <div class="col-sm">
       <h4>Add Players to the team</h4>
       <form action="/team/{{id}}" method="POST">
 
@@ -56,85 +156,7 @@
         </div>
         <button type="submit" class="btn btn-success">Add Player</button>  
       </form>
-    </div>
-  </div>
-
-  {{!-- Button and Modal to Generate Random teams --}}
-  <!-- Button trigger modal -->
-  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-    Generate Random Teams
-  </button>
-
-  <!-- Modal -->
-  <div class="modal fade" data-bs-backdrop="static" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Generate Random Teams</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          Select the players
-          <form action="/team/generate/{{id}}" method="POST">
-
-            {{#each players}}
-              <input type="checkbox" name="playername" value="{{id}}" class="btn-check" id="btn-check-outlined-{{name}}" autocomplete="off">
-              <label class="btn btn-outline-primary" for="btn-check-outlined-{{name}}">{{name}}</label><br>
-            {{/each}}
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="submit" class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal">Generate Teams</button>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  {{!-- Show stared teams --}}
-  <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
-    Starred Teams
-  </button>
-
-<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
-  <div class="offcanvas-header">
-    <h5 class="offcanvas-title" id="offcanvasExampleLabel">Starred Teams</h5>
-    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-  </div>
-  <div class="offcanvas-body">
-    <div>
-        {{#each starred}}
-          <div class="accordion" id="accordionExample">
-            <div class="accordion-item ">
-              <h2 class="accordion-header">
-                <button class="accordion-button collapsed players-list-accordion-header" type="button" data-bs-toggle="collapse" data-bs-target="#{{id}}" aria-expanded="false" aria-controls="{{this}}">
-                See player
-                </button>
-              </h2>
-              <div id="{{id}}" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                <div class="accordion-body players-list-accordion-body">
-                  <h6>Team one:</h6>
-                  {{#each OneTeam}}
-                    {{name}}  
-                  {{/each}}
-                  <hr>
-                  <h6>Team Two:</h6>
-                  {{#each TwoTeam}}
-                    {{name}}  
-                  {{/each}}
-                  <hr>
-                  {{!-- TODO: create route to remove star --}}
-                  <form action="/team/{{../_id}}/removeStarred" method="POST">
-                    <input type="text" hidden name="startedTeamID" value="{{id}}">
-                    <button type="submit" class="btn btn-light"><span class="bi-trash"></span></button>
-                  </form>
-                  </div>
-                </div>
-            </div>
-          </div>
-        {{/each}}
-      </div>
-    </div>
+    </div> --}}
   </div>
 
 </div>
