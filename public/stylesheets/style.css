@@ -15,7 +15,7 @@
     height: 20rem;
 }
 
-.card-title {
+.cardTitle {
     margin-bottom: 4rem;
 }
 
@@ -88,9 +88,21 @@
 
 .schedule-cards {
     margin: 1rem;
+    align-items: center;
 }
 
 .secondButton {
     background-color: rgb(255, 243, 205);
     border: none;
+}
+
+#save {
+    margin-left: 1rem;
+}
+
+.cardInsideSchedule {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
