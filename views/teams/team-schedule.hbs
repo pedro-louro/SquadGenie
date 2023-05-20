@@ -9,18 +9,16 @@
   
   <div class="row">
     {{#each teamsList}}
-        <ul class="list-group list-group-horizontal-md">
-            <li class="list-group-item col list-group-item-action list-group-light">{{name}}</li>
-            <li class="list-group-item col list-group-item-action list-group-item-light">
-                <div class="input-group flatpickr">
-                  <input type="text" class="form-control datepicker-input" placeholder="Select Date" value="{{selectedDate}}" required>
-                  <button class="btn btn-primary save-date" data-teamId="{{_id}}">Save</button>
-                </div>
-            </li>
-            <li class="list-group-item col list-group-item-action list-group-item-light">
-              <a href=""><button class="btn btn-primary">Game</button></a>
-            </li>
-      </ul>
+      <div class="card schedule-cards" style="width: 22rem; height: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title">{{name}}</h5>
+          <div class="input-group flatpickr">
+            <input type="text" class="form-control datepicker-input" placeholder="Select Date" value="{{selectedDate}}" required>
+          </div>
+          <button class="btn btn-warning save-date secondButton" data-teamId="{{_id}}">Save</button>
+          <a href="" class="card-link btn btn-warning secondButton" role="button">Game Info</a>
+        </div>
+      </div>
     {{/each}}
   </div>
 
