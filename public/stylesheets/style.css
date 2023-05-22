@@ -22,6 +22,17 @@
     height: 20rem;
 }
 
+.teamcard {
+    background-color: rgb(248, 249, 250);
+    border: none;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+    margin: auto;
+    margin-top: 5rem;
+    align-items: center;
+    width: 20rem;
+    height: 15rem;
+}
+
 .crdtls {
     margin-top: 3.5rem;
 }
@@ -129,4 +140,8 @@
 
 .teamSchedule {
     margin-bottom: 2rem;
+}
+
+.naming {
+    margin-top: 2rem;
 }
