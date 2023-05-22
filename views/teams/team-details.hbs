@@ -87,20 +87,21 @@
   {{!-- Show players of the team --}}
   <h4 class="mt-4">Players</h4>
 
-  <div class="row gap-3">
+  <div class="row gap-4">
     {{#if players}}
       {{#each players}}
-      <div class="card" style="width: 18rem;">
-        <h5 class="card-title">{{name}}</h5>
-          <button class="btn btn-light" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample{{_id}}" aria-expanded="false" aria-controls="collapseExample">
-            test
-          </button>
-        <div class="card-body collapse" id="collapseExample{{_id}}">
-          <b class="card-text">Email:</b> {{email}}
-          <b>Rating:</b> {{rate}}
-          <form action="/team/{{../_id}}/delete-player/{{_id}}" method="POST">
-            <button type="submit" class="btn bi-trash"></button>
-          </form>
+      <div class="border rounded players-cards" style="width: 12rem;">
+        <h5 class="d-inline">{{name}}</h5>
+        <button class="btn bi-three-dots-vertical" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample{{_id}}" aria-expanded="false" aria-controls="collapseExample{{_id}}">
+        </button>
+        <div class="card card-body collapse border-0" id="collapseExample{{_id}}">
+          <p class="card-text">
+            <b>Email:</b> {{email}} 
+            <b>Rating:</b> {{rate}}
+            <form action="/team/{{../_id}}/delete-player/{{_id}}" method="POST">
+              <button type="submit" class="btn bi-trash"></button>
+            </form>
+          </p>
       </div>
     </div>
       {{/each}}

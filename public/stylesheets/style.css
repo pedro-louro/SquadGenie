@@ -130,3 +130,10 @@
 .teamSchedule {
     margin-bottom: 2rem;
 }
+
+.players-cards {
+    background-color: rgb(248, 249, 250);
+    border: none;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+    align-items: center;
+}
