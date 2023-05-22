@@ -31,8 +31,6 @@ router.post('/teams/create', requireLogin, async (req, res) => {
     owner: req.session.currentUser._id
   });
 
-  // console.log("NEW TEAM: ")
-  // console.log(newTeam)
   res.redirect(`/team/${newTeam.id}`);
 });
 
@@ -43,6 +41,7 @@ router.get('/team/:id', requireLogin, async (req, res) => {
   res.render('teams/team-details', getTeam);
 });
 
+// Add player to team
 router.post('/team/:id', requireLogin, async (req, res) => {
   const getTeam = await Team.findById(req.params.id).populate('players');
 
@@ -53,14 +52,22 @@ router.post('/team/:id', requireLogin, async (req, res) => {
     player = await Player.create({
       name: playerName,
       email,
+      rate,
+      teams: [req.params.id]
+    });
+  } else {
+    player = await Player.findByIdAndUpdate(player._id, {
+      name: playerName,
+      email,
       rate
+      // teams: [...player.teams, req.params.id]
     });
   }
 
   const updatedTeam = await Team.findByIdAndUpdate(getTeam.id, {
     players: [...getTeam.players, player]
   });
-  // console.log(updatedTeam)
+  // console.log(updatedTeam);
 
   res.redirect(`/team/${getTeam.id}`);
 });
@@ -75,12 +82,18 @@ router.post(
 
     // find the team needed
     const team = await Team.findById(teamId).populate('players');
+    // const player = await Player.findById(playerId);
 
     // remove the player from the team using .filter
     team.players = team.players.filter(player => player.id !== playerId);
+    // // remove teams from player model
+    // player.teams = player.teams.filter(team => team !== teamId);
+    // console.log(teamId);
+    // console.log(player.teams);
 
     // save the updated team
     await team.save();
+    // await player.save();
 
     res.redirect(`/team/${teamId}`);
   }
@@ -97,9 +110,18 @@ router.post('/team/:id/delete', requireLogin, async (req, res) => {
 
 // Teams list route
 router.get('/teams', requireLogin, async (req, res) => {
-  // console.log(req.session.currentUser._id)
   const teamsList = await Team.find({ owner: req.session.currentUser._id });
-  // console.log(teamsList)
+  console.log(teamsList);
+
+  // const playerId = await Player.findOne({
+  //   email: req.session.currentUser.email
+  // });
+  // const teamsOfPlayerUser = await Team.find({
+  //   players: playerId.id
+  // });
+
+  // console.log('TEams of user');
+  // console.log(teamsOfPlayerUser);
   res.render('teams/teams-list', { teamsList });
 });
 
