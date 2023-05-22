@@ -14,8 +14,11 @@
           <h5 class="card-title teamName">{{name}}</h5>
           <!-- class="input-group flatpickr" -->
           <div class="input-group teamSchedule">
-            <input type="text" class="form-control datepicker-input" placeholder="Select Date" value="{{selectedDate}}" required>
-            <i class="bi bi-save2 btn btn-warning save-date secondButton" data-teamId="{{_id}}"></i>
+            <form action="/teams/save-date" method="POST">
+              <input type="text" class="form-control datepicker-input" placeholder="Select Date" name="selectedDate" required>
+              <input hidden type="text" name="teamId" value="{{id}}">
+              <button type="submit" class="bi bi-save2 btn btn-warning save-date secondButton"></button>
+            </form>
             <!-- <button class="btn btn-warning save-date secondButton" data-teamId="{{_id}}">Save</button> -->
           </div>
           <a href="" class="card-link btn btn-warning secondButton" role="button">Game Info</a>

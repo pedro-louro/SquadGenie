@@ -5,7 +5,7 @@
       <div class="shadow-sm border-light rounded card w-75 list-group list-group-horizontal-md list-group-item-action mb-3">
           <div class="card-body d-inline-flex p-5 w-100 flex-row- justify-content-around align-items-center">
             <h3 class="card-title w-25 m-0 d-inline flex-grow-2">{{name}}</h3>
-            <a href="/game/gameID" class="btn btn-light"><span class="bi-calendar3"></span> Next Game</span></a>
+            <span class="bi-calendar3"></span> Next Game</span> <p>{{games.[0]}}</p>
             <a href="/game/gameID" class="btn btn-light"><span class="bi-calendar-plus"></span> Schedule Game</span></a>
             <a href="/team/{{id}}"><button type="button" class="btn secondButton btn-warning"><span class="bi-gear-fill"></span> Manage</button></a>
             <form action="/team/{{_id}}/delete" class="d-inline"method="POST">

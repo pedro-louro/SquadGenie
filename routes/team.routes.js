@@ -55,19 +55,11 @@ router.post('/team/:id', requireLogin, async (req, res) => {
       rate,
       teams: [req.params.id]
     });
-  } else {
-    player = await Player.findByIdAndUpdate(player._id, {
-      name: playerName,
-      email,
-      rate
-      // teams: [...player.teams, req.params.id]
-    });
   }
 
   const updatedTeam = await Team.findByIdAndUpdate(getTeam.id, {
     players: [...getTeam.players, player]
   });
-  // console.log(updatedTeam);
 
   res.redirect(`/team/${getTeam.id}`);
 });
@@ -82,18 +74,9 @@ router.post(
 
     // find the team needed
     const team = await Team.findById(teamId).populate('players');
-    // const player = await Player.findById(playerId);
-
     // remove the player from the team using .filter
     team.players = team.players.filter(player => player.id !== playerId);
-    // // remove teams from player model
-    // player.teams = player.teams.filter(team => team !== teamId);
-    // console.log(teamId);
-    // console.log(player.teams);
-
-    // save the updated team
     await team.save();
-    // await player.save();
 
     res.redirect(`/team/${teamId}`);
   }
@@ -110,18 +93,8 @@ router.post('/team/:id/delete', requireLogin, async (req, res) => {
 
 // Teams list route
 router.get('/teams', requireLogin, async (req, res) => {
-  const teamsList = await Team.find({ owner: req.session.currentUser._id });
+  const teamsList = await Team.find({ owner: req.session.currentUser._id }, {});
   console.log(teamsList);
-
-  // const playerId = await Player.findOne({
-  //   email: req.session.currentUser.email
-  // });
-  // const teamsOfPlayerUser = await Team.find({
-  //   players: playerId.id
-  // });
-
-  // console.log('TEams of user');
-  // console.log(teamsOfPlayerUser);
   res.render('teams/teams-list', { teamsList });
 });
 
@@ -209,18 +182,29 @@ router.get('/teams/schedule', requireLogin, async (req, res) => {
 
 router.post('/teams/save-date', requireLogin, async (req, res) => {
   const { teamId, selectedDate } = req.body;
+  console.log(req.body);
 
   const team = await Team.findById(teamId);
-  team.nextGameDate = selectedDate;
+  // team.nextGameDate = selectedDate;
 
   const newGame = new Game({
     scheduledDate: selectedDate
   });
-
-  team.games.push(newGame);
+  team.games.push(
+    new Date(
+      Date.UTC(
+        Number(selectedDate.slice(6, 10)),
+        Number(selectedDate.slice(3, 5)) - 1,
+        Number(selectedDate.slice(0, 2))
+      )
+    )
+  );
   await team.save();
 
   const updatedTeam = await Team.findById(teamId);
+
+  updatedTeam.games.sort((date1, date2) => date1 - date2);
+  await updatedTeam.save();
 
   res.redirect('/teams/schedule');
   // TO DO: when we redirect, instead of the placeholder should show the saved date
