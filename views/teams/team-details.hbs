@@ -1,7 +1,41 @@
-<div class="container add-players mt-0 pt-3">
-  <h2>{{name}}</h2>
+<div class="container card teamCard">
+  <h2 class="text-center">{{name}}</h2>
 
-  <div class="mt-3 player-details-buttons-list w-50 d-flex flex-row- justify-content-start align-items-center">
+  {{!-- Show players of the team --}}
+  <h5 class="mt-4">
+    PLAYERS
+    <button type="button" class="btn btn-warning addButton" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+    <span class="bi-plus-circle cardInsideSchedule"></span>
+    </button>
+  </h5>
+
+  <div class="row gap-4 row-cols-6">
+    {{#if players}}
+      {{#each players}}
+      <div class="col playerCard">
+        <div class="border rounded players-details">
+          <h6 class="d-inline">{{name}}</h6>
+          <button class="btn bi-three-dots-vertical" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample{{_id}}" aria-expanded="false" aria-controls="collapseExample{{_id}}">
+          </button>
+          <div class="card card-body collapse border-0" id="collapseExample{{_id}}">
+            <p class="card-text">
+              <b>Email:</b> {{email}} 
+              <b>Rating:</b> {{rate}}
+              <form action="/team/{{../_id}}/delete-player/{{_id}}" method="POST">
+                <button type="submit" class="btn bi-trash"></button>
+              </form>
+            </p>
+          </div>
+        </div>
+      </div>
+      
+      {{/each}}
+    {{else}}
+      <p>Add the first player</p>
+    {{/if}}
+  </div>
+
+  <div class="mt-3 w-50 teamButtons">
     {{!-- Button and Modal to Generate Random teams --}}
     <!-- Button trigger modal -->
     <button type="button" class="btn secondButton btn-warning me-3 bi-shuffle" data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -80,132 +114,20 @@
     {{!--ENDstared teams --}}
     
     <form action="/team/{{_id}}/delete" method="POST">
-      <a href="/team/{{id}}"><button type="submit" class="btn btn-danger"><span class="bi-trash"></span></button></a>
-    </form>   
-  </div>
-
-  {{!-- Show players of the team --}}
-  <h4 class="mt-4">Players</h4>
-
-  <div class="row gap-4">
-    {{#if players}}
-      {{#each players}}
-      <div class="border rounded players-cards" style="width: 12rem;">
-        <h5 class="d-inline">{{name}}</h5>
-        <button class="btn bi-three-dots-vertical" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample{{_id}}" aria-expanded="false" aria-controls="collapseExample{{_id}}">
-        </button>
-        <div class="card card-body collapse border-0" id="collapseExample{{_id}}">
-          <p class="card-text">
-            <b>Email:</b> {{email}} 
-            <b>Rating:</b> {{rate}}
-            <form action="/team/{{../_id}}/delete-player/{{_id}}" method="POST">
-              <button type="submit" class="btn bi-trash"></button>
-            </form>
-          </p>
-      </div>
-    </div>
-      {{/each}}
-    {{else}}
-      <p>Add the first player</p>
-    {{/if}}
-  </div>
-
-  <div class="container-fluid d-flex flex-row-reverse fixed-bottom">
-  <!-- Button trigger modal -->
-  <button type="button" class="btn btn-success p-2 fs-5" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-    <span class="bi-plus-circle"></span> Add Player
-  </button>
-</div>
-
-<!-- Modal -->
-<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="staticBackdropLabel">Add Player</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <form action="/team/{{id}}" method="POST">
-
-      <div class="form-floating mb-3">
-        <input type="text" name="playerName" class="form-control" id="floatingInput" placeholder="John Doe">
-        <label for="floatingInput">Name</label>
-      </div>
-
-      <div class="form-floating mb-3">
-        <input type="email" name="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-        <label for="floatingInput">Email address</label>
-      </div>
-
-      <div class="form-floating mb-3">
-        <input type="number" name="rate" min="1" max="10" class="form-control" id="floatingInput" placeholder="John Doe">
-        <label for="floatingInput">Rating</label>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-success">Add Player</button>
-     </div>
-      
+      <a href="/team/{{id}}"><button type="submit" class="btn btn-warning secondButton"><span class="bi-trash"></span></button></a>
     </form>
-    </div>
+
   </div>
-</div>
-  {{!-- V0 Add player to team --}}
-  {{!-- <div class="row mt-5">
-    <h4>Add Players to the team</h4>
-    <form action="/team/{{id}}" method="POST">
 
-      <div class="form-floating mb-3">
-        <input type="text" name="playerName" class="form-control" id="floatingInput" placeholder="John Doe">
-        <label for="floatingInput">Name</label>
-      </div>
-
-      <div class="form-floating mb-3">
-        <input type="email" name="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-        <label for="floatingInput">Email address</label>
-      </div>
-
-      <div class="form-floating mb-3">
-        <input type="number" name="rate" min="1" max="10" class="form-control" id="floatingInput" placeholder="John Doe">
-        <label for="floatingInput">Rating</label>
-      </div>
-      <button type="submit" class="btn btn-success">Add Player</button>  
-    </form>
-  </div> --}}
-
-  {{!-- <div class="row add-players-form">
-    <div class="col-sm">
-      <h4>Players</h4>
-      {{#if players}}
-        {{#each players}}
-          <div class="accordion" id="accordionExample">
-            <div class="accordion-item ">
-              <h2 class="accordion-header">
-                <button class="accordion-button collapsed players-list-accordion-header" type="button" data-bs-toggle="collapse" data-bs-target="#{{id}}" aria-expanded="false" aria-controls="{{id}}">
-                  {{name}}
-                </button>
-              </h2>
-              <div id="{{id}}" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                <div class="accordion-body players-list-accordion-body">
-                  <b>Email:</b> {{email}}
-                  <b>Rating:</b> {{rate}}
-
-                  <form action="/team/{{../_id}}/delete-player/{{_id}}" method="POST">
-                    <button type="submit">Delete</button>
-                  </form>
-                </div>
-              </div>
-            </div>
-          </div>
-        {{/each}}
-      {{else}}
-        <p>Add the first player</p>
-      {{/if}}
-    </div> --}}
-
-    {{!-- <div class="col-sm">
-      <h4>Add Players to the team</h4>
-      <form action="/team/{{id}}" method="POST">
+  <!-- Modal -->
+  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="staticBackdropLabel">Add Player</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <form action="/team/{{id}}" method="POST">
 
         <div class="form-floating mb-3">
           <input type="text" name="playerName" class="form-control" id="floatingInput" placeholder="John Doe">
@@ -221,9 +143,13 @@
           <input type="number" name="rate" min="1" max="10" class="form-control" id="floatingInput" placeholder="John Doe">
           <label for="floatingInput">Rating</label>
         </div>
-        <button type="submit" class="btn btn-success">Add Player</button>  
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-success">Add Player</button>
+      </div>
+        
       </form>
-    </div> --}}
-  {{!-- </div> --}}
-
+      </div>
+    </div>
+  </div>
 </div>
