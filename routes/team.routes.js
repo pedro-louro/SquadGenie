@@ -93,9 +93,21 @@ router.post('/team/:id/delete', requireLogin, async (req, res) => {
 
 // Teams list route
 router.get('/teams', requireLogin, async (req, res) => {
-  const teamsList = await Team.find({ owner: req.session.currentUser._id }, {});
-  console.log(teamsList);
-  res.render('teams/teams-list', { teamsList });
+  const teamsList = await Team.find({ owner: req.session.currentUser._id });
+
+  //TODO: remove game from array if day is from the past
+
+  const finalList = JSON.parse(JSON.stringify(teamsList));
+
+  finalList.forEach(team => {
+    if (team.games[0]) {
+      {
+        team.gameFormatted = team.games[0].toString().slice(0, 10);
+      }
+    }
+  });
+
+  res.render('teams/teams-list', { finalList });
 });
 
 //Generate random teams
@@ -182,7 +194,6 @@ router.get('/teams/schedule', requireLogin, async (req, res) => {
 
 router.post('/teams/save-date', requireLogin, async (req, res) => {
   const { teamId, selectedDate } = req.body;
-  console.log(req.body);
 
   const team = await Team.findById(teamId);
   // team.nextGameDate = selectedDate;
