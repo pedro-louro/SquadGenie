@@ -1,30 +1,36 @@
 <div class="container">
   <div class="row">
-    <div class="col align-items-center">
-      <h2 class="text-success">Team 1</h2>
-      <ul class="list-group">
-      {{#each randomTeams.finalTeamOne}}
-        {{#if this.name}}
-          <li class="list-group-item border border-primary-subtle rounded">{{this.name}}</li>
-        {{else}}
-          Team Rate: {{this}}
-        {{/if}}
-      {{/each}}
-      </ul>
+    <div class="card align-items-center generateCard">
+      <div class="card-body">
+        <h4 class="card-title text-warning-emphasis teamTitle">TEAM 1</h4>
+        <ul class="list-group">
+        {{#each randomTeams.finalTeamOne}}
+          {{#if this.name}}
+            <li class="list-group-item border border-warning-subtle rounded text-warning-emphasis">{{this.name}}</li>
+          {{else}}
+            Team Rate: {{this}}
+          {{/if}}
+        {{/each}}
+        </ul>
+      </div>
     </div>
-    <div class="col">
-      <h2 class="text-primary">Team 2</h2>
-      <ul class="list-group">
-      {{#each randomTeams.finalTeamTwo}}
-        {{#if this.name}}
-          <li class="list-group-item border border-primary-subtle rounded">{{this.name}}</li>
-        {{else}}
-          Team Rate: {{this}}
-        {{/if}}
-      {{/each}}
-      </ul>
+
+    <div class="card align-items-center generateCard">
+      <div class="card-body">
+        <h4 class="card-title text-warning-emphasis teamTitle">TEAM 2</h4>
+        <ul class="list-group">
+          {{#each randomTeams.finalTeamTwo}}
+            {{#if this.name}}
+              <li class="list-group-item border border-warning-subtle rounded text-warning-emphasis">{{this.name}}</li>
+            {{else}}
+              Team Rate: {{this}}
+            {{/if}}
+          {{/each}}
+        </ul>
+      </div>
     </div>
-  </div>  
+  </div> 
+
   <a href="/team/{{id}}"><button type="button" class="btn btn-secondary">
     Back to Team
   </button></a>
