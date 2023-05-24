@@ -5,7 +5,7 @@
   <h5 class="mt-4">
     PLAYERS
     <button type="button" class="btn btn-warning addButton" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-    <span class="bi-plus-circle cardInsideSchedule"></span>
+    <span class="bi bi-person-add cardInsideSchedule"></span>
     </button>
   </h5>
 
@@ -14,32 +14,37 @@
       {{#each players}}
       <div class="col playerCard">
         <div class="border rounded players-details">
-          <h6 class="d-inline">{{name}}</h6>
-          <button class="btn bi-three-dots-vertical" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample{{_id}}" aria-expanded="false" aria-controls="collapseExample{{_id}}"></button>
-          <div class="card card-body collapse border-0" id="collapseExample{{_id}}">
-            <div class="modal" tabindex="-1">
-              <div class="modal-dialog">
+          <h6 class="d-inline playerName">{{name}}</h6>
+          {{!-- Button and Modal to Get more info about players --}}
+          <!-- Button trigger modal -->
+          <button class="btn" type="button" data-bs-toggle="modal" data-bs-target="#modal{{name}}">
+            <span class="bi-plus-circle"></span>
+          </button>
+        </div>
+          <!-- Modal more info about players -->
+          <div class="modal fade" data-bs-backdrop="static" id="modal{{name}}" tabindex="-1" aria-labelledby="modalLabel{{name}}" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                   <div class="modal-header">
+                    <h6 class="modal-title" id="modalLabel{{name}}"><b>{{name}}</b></h6>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
                   <div class="modal-body">
                     <p class="card-text">
-                      <b>Email:</b> {{email}} 
-                      <b>Rating:</b> {{rate}}
+                      <b>Email:</b> {{email}}
+                    </p>
+                    <p class="card-text">
+                      <b>Rating: </b> {{rate}}
                     </p>
                   </div>
                   <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     <form action="/team/{{../_id}}/delete-player/{{_id}}" method="POST">
-                      <button type="submit" class="btn bi-trash"></button>
+                      <button type="submit" class="btn bi-trash btn-warning secondButton"></button>
                     </form>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
       </div>
       
       {{/each}}
@@ -51,29 +56,28 @@
   <div class="mt-3 w-50 teamButtons">
     {{!-- Button and Modal to Generate Random teams --}}
     <!-- Button trigger modal -->
-    <button type="button" class="btn secondButton btn-warning me-3 bi-shuffle" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    <button type="button" class="btn secondButton btn-warning text-warning-emphasis me-3 bi-shuffle" data-bs-toggle="modal" data-bs-target="#exampleModal">
        Shuffle Teams
     </button>
     <!-- Modal Generate Random Team-->
     <div class="modal fade" data-bs-backdrop="static" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
+      <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalLabel">Generate Random Teams</h1>
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Select Players</h1>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
-          <div class="modal-body">
-            Select the players
-            <form action="/team/generate/{{id}}" method="POST">
 
+          <div class="modal-body modal-body-centered">
+            <form action="/team/generate/{{id}}" method="POST">
               {{#each players}}
-                <input type="checkbox" name="playername" value="{{id}}" class="btn-check" id="btn-check-outlined-{{name}}" autocomplete="off">
-                <label class="btn btn-outline-primary" for="btn-check-outlined-{{name}}">{{name}}</label><br>
+                  <input type="checkbox" name="playername" value="{{id}}" class="btn-check" id="btn-check-outlined-{{name}}" autocomplete="off">
+                  <label class="btn btn-outline-warning text-warning-emphasis playerButton" for="btn-check-outlined-{{name}}">{{name}}</label>
               {{/each}}
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal">Generate Teams</button>
-              </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-warning text-warning-emphasis secondButton" data-bs-dismiss="modal">Close</button>
+                  <button type="submit" class="btn btn-warning text-warning-emphasis secondButton" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal">Generate Teams</button>
+                </div>
             </form>
           </div>
         </div>
@@ -81,7 +85,7 @@
     </div>
 
     {{!--Show stared teams --}}
-    <button class="btn secondButton btn-warning me-3 bi-star" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+    <button class="btn secondButton btn-warning text-warning-emphasis me-3 bi-star" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
       Saved Teams
     </button>
 
@@ -127,7 +131,7 @@
     {{!--ENDstared teams --}}
     
     <form action="/team/{{_id}}/delete" method="POST">
-      <a href="/team/{{id}}"><button type="submit" class="btn btn-warning secondButton"><span class="bi-trash"></span></button></a>
+      <a href="/team/{{id}}"><button type="submit" class="btn btn-warning secondButton text-warning-emphasis"><span class="bi-trash"></span></button></a>
     </form>
 
   </div>

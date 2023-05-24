@@ -174,6 +174,9 @@
     background-color: rgb(248, 249, 250);
     border: none;
     box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+    height: 3rem;
+    padding-top: .3rem;
+    padding-left: 1rem;
 
 }
 
@@ -199,4 +202,12 @@
     border: none;
     box-shadow: 0 3px 10px rgb(0 0 0 / 0.2)
 
+}
+.playerName {
+    margin-right: 2rem;
+}
+
+.playerButton {
+    width: 10rem;
+    margin: 1rem;
 }
