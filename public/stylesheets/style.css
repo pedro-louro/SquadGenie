@@ -181,3 +181,22 @@
     justify-content: center;
     width: 12rem;
 }
+
+.home-carousel-image{
+    background-color: rgba(169, 247, 133, 0.51);
+    border: none;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+}
+.home-carousel-text{
+    background-color: rgb(248, 249, 250);
+    border: none;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+    color: black;
+}
+
+.about-card {
+    background-color: rgb(248, 249, 250);
+    border: none;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2)
+
+}
