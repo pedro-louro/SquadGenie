@@ -95,10 +95,27 @@ router.post('/team/:id/delete', requireLogin, async (req, res) => {
 router.get('/teams', requireLogin, async (req, res) => {
   const teamsList = await Team.find({ owner: req.session.currentUser._id });
 
-  //TODO: remove game from array if day is from the past
+  //remove games older than today from the team.games array
+  const dateNow = new Date();
+  const changeFormat = dateNow.toISOString();
+  const finalFormat = new Date(
+    Date.UTC(
+      Number(changeFormat.slice(0, 4)),
+      Number(changeFormat.slice(5, 7)) - 1,
+      Number(changeFormat.slice(8, 10))
+    )
+  );
+
+  for (let i = 0; i < teamsList.length; i++) {
+    const newArray = teamsList[i].games.filter(
+      game => game.getTime() >= finalFormat.getTime()
+    );
+    console.log(teamsList[i].id);
+    console.log(newArray);
+    await Team.findByIdAndUpdate(teamsList[i].id, { games: newArray });
+  }
 
   const finalList = JSON.parse(JSON.stringify(teamsList));
-
   finalList.forEach(team => {
     if (team.games[0]) {
       {
