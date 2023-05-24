@@ -125,7 +125,6 @@ router.get('/teams', requireLogin, async (req, res) => {
       }
     }
   });
-
   res.render('teams/teams-list', { finalList });
 });
 
