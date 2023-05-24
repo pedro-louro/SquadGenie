@@ -107,9 +107,11 @@ router.get('/teams', requireLogin, async (req, res) => {
   );
 
   for (let i = 0; i < teamsList.length; i++) {
-    const newArray = teamsList[i].games.filter(
-      game => game.getTime() >= finalFormat.getTime()
-    );
+    const newArray = teamsList[i].games.filter(game => {
+      if (game.length) {
+        game.getTime() >= finalFormat.getTime();
+      }
+    });
     console.log(teamsList[i].id);
     console.log(newArray);
     await Team.findByIdAndUpdate(teamsList[i].id, { games: newArray });
