@@ -236,7 +236,6 @@ router.post('/teams/save-date', requireLogin, async (req, res) => {
   await updatedTeam.save();
 
   res.redirect('/teams/schedule');
-  // TO DO: when we redirect, instead of the placeholder should show the saved date
 });
 
 module.exports = router;
