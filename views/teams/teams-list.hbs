@@ -7,9 +7,9 @@
             <h3 class="card-title w-25 m-0 d-inline flex-grow-2">{{name}}</h3>
             <span class="bi-calendar3"></span> Next Game</span> <p>{{gameFormatted}}</p>
             <a href="/teams/schedule" class="btn btn-light"><span class="bi-calendar-plus"></span> Schedule Game</span></a>
-            <a href="/team/{{_id}}"><button type="button" class="btn secondButton btn-warning"><span class="bi-gear-fill"></span> Manage</button></a>
+            <a href="/team/{{_id}}"><button type="button" class="btn secondButton btn-warning text-warning-emphasis"><span class="bi-gear-fill"></span> Manage</button></a>
             <form action="/team/{{_id}}/delete" class="d-inline"method="POST">
-              <a href="/team/{{_id}}"><button type="submit" class="btn btn-danger"><span class="bi-trash"></span></button></a>
+              <a href="/team/{{_id}}"><button type="submit" class="btn btn-warning secondButton text-warning-emphasis"><span class="bi-trash"></span></button></a>
             </form>
           </div>
       </div>
@@ -20,8 +20,8 @@
 
 <div class="container-fluid d-flex flex-row-reverse create-team-list fixed-bottom">
   <!-- Button trigger modal -->
-  <button type="button" class="btn btn-success p-2 create-team-button fs-5" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-    <span class="bi-plus-circle"></span> Create Team
+  <button type="button" class="btn btn-warning p-2 create-team-button fs-5 secondButton text-warning-emphasis" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+    <span class="bi-plus-circle"></span>
   </button>
 </div>
 
@@ -30,7 +30,7 @@
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="staticBackdropLabel">Create Team</h1>
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">New Team</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <form action="/teams/create" method="POST">
@@ -41,8 +41,8 @@
           </div>  
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-success">Create Team</button>
+        <button type="button" class="btn btn-warning secondButton text-warning-emphasis" data-bs-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-warning secondButton text-warning-emphasis">Create</button>
       </div>
       </form>
     </div>

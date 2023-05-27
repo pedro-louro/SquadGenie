@@ -6,9 +6,9 @@
         <ul class="list-group">
         {{#each randomTeams.finalTeamOne}}
           {{#if this.name}}
-            <li class="list-group-item border border-warning-subtle rounded text-warning-emphasis">{{this.name}}</li>
+            <li class="list-group-item border border-warning-subtle rounded text-warning-emphasis playerGenerated">{{this.name}}</li>
           {{else}}
-            Team Rate: {{this}}
+            <p class="text-warning-emphasis"><b>Rating: </b>{{this}}</p>
           {{/if}}
         {{/each}}
         </ul>
@@ -21,9 +21,9 @@
         <ul class="list-group">
           {{#each randomTeams.finalTeamTwo}}
             {{#if this.name}}
-              <li class="list-group-item border border-warning-subtle rounded text-warning-emphasis">{{this.name}}</li>
+              <li class="list-group-item border border-warning-subtle rounded text-warning-emphasis playerGenerated">{{this.name}}</li>
             {{else}}
-              Team Rate: {{this}}
+              <p class="text-warning-emphasis"><b>Rating: </b>{{this}}</p>
             {{/if}}
           {{/each}}
         </ul>
@@ -31,9 +31,11 @@
     </div>
   </div> 
 
-  <a href="/team/{{id}}"><button type="button" class="btn btn-secondary">
-    Back to Team
-  </button></a>
+  <a href="/team/{{id}}">
+    <button type="button" class="btn btn-warning secondButton text-warning-emphasis generateButton">
+      Back
+    </button>
+  </a>
 
 
   <form action="/team/{{id}}/starred" method="POST">
@@ -55,7 +57,7 @@
         <input hidden type="textarea" name="teamOneTwo" value="{{this}}">
       {{/if}}
     {{/each}}
-    <button type="submit">Save team</button>
+    <button type="submit" class="btn btn-warning secondButton text-warning-emphasis generateButton">Save Team</button>
   </form>
 
 </div>
