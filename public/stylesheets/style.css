@@ -1,228 +1,239 @@
-.bckgrd {
-    background-color: rgb(255, 243, 205);
-}
-
-.puppy {
-    margin-top: 8vh;
-    height: 75vh;
-}
-
-.loginHome {
-    margin-right: 1rem;
-}
-
-.credentials {
-    background-color: rgb(248, 249, 250);
-    border: none;
-    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
-    margin: auto;
-    margin-top: 5rem;
-    align-items: center;
-    width: 20rem;
-    height: 20rem;
-}
-
-.teamcard {
-    background-color: rgb(248, 249, 250);
-    border: none;
-    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
-    margin: auto;
-    margin-top: 5rem;
-    align-items: center;
-    width: 20rem;
-    height: 15rem;
-}
-
-.crdtls {
-    margin-top: 3.5rem;
-}
-
-.bckgrd {
-    background-color: rgb(255, 243, 205);
-}
-
-.cardTitle {
-    margin-bottom: 4rem;
-}
-
-.card-title-sgn {
-    margin-bottom: 2rem;
-}
-
-.forms {
-    width: 15rem;
-}
-
-.loginButton {
-    margin-top: 3rem;
-    width: 5rem;
-}
-
-.createButton {
-    margin-top: 1.5rem;
-    width: 10rem;
-}
-
-.errorMessage {
-    margin: auto;
-    width: 20rem;
-}
-
-.teams-list{
-    margin-top: 5%;
-}
-.team-name-list{
-    padding: 15px;
-}
-
-
-.list-group-item {
-    margin-bottom: 3%;
-}
-
-.players-list {
-    width: 40%;
-    padding: auto;
-}
-
-.players-list-accordion-header {
-    padding: 3%;
-}
-
-.players-list-accordion-body {
-    padding: 3%;
-}
-.add-players {
-    padding-top: 4%
-}
-.add-players-form {
-    padding-top: 4%;
-}
-.create-team {
-    margin-top: 4%;
-}
-.create-team h2{
-    margin-bottom: 4%;
-}
-.create-team-list {
-    padding-bottom: 3%;
-    padding-right: 2%;
-}
-.create-team-button {
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-}
-
-.schedule-cards {
-    background-color: rgb(248, 249, 250);
-    border: none;
-    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
-    width: 22rem;
-    height: 15rem;
-    margin: 1rem;
-    align-items: center;
-}
-
-.secondButton {
-    background-color: rgb(255, 243, 205);
-    border: none;
-}
-
-.cardInsideSchedule {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.teamName {
-    margin-bottom: 3rem;
-}
-
-.teamSchedule {
-    margin-bottom: 2rem;
-}
-
-.naming {
-    margin-top: 2rem;
-}
-
-.addButton {
-    width: 2.2rem;
-    height: 2.2rem;
-    background-color: rgb(255, 243, 205);
-    border: none;
-    border-radius: 1.1rem;
-}
-
-.teamCard {
-    background-color: rgb(248, 249, 250);
-    border: none;
-    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
-    margin-top: 4rem;
-    padding-top: 2rem;
-    width: auto;
-    height: 33rem;
-}
-
-.teamButtons {
-    display: flex;
-    flex-wrap: nowrap;
-    padding-top: 7rem;
-}
-
-.players-details {
-    background-color: rgb(248, 249, 250);
-    border: none;
-    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
-    height: 3rem;
-    padding-top: .3rem;
-    padding-left: 1rem;
-
-}
-
-.playerCard {
-    justify-content: center;
-    width: 12rem;
-}
-
-.home-carousel-image{
-    background-color: rgba(169, 247, 133, 0.51);
-    border: none;
-    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
-}
-.home-carousel-text{
-    background-color: rgb(248, 249, 250);
-    border: none;
-    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
-    color: black;
-}
-
-.about-card {
-    background-color: rgb(248, 249, 250);
-    border: none;
-    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2)
-
-}
-.playerName {
-    margin-right: 2rem;
-}
-
-.playerButton {
-    width: 10rem;
-    margin: 1rem;
-}
-
-.generateCard {
-    background-color: rgb(248, 249, 250);
-    border: none;
-    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
-    width: 20rem;
-    margin-top: 3rem;
-    margin-left: 8rem;
-    margin-right: 8rem;
-}
-
-.teamTitle {
-    margin-top: 1rem;
-    margin-bottom: 2rem;
-}
+body {
+    background-color: rgb(245, 245, 245);
+ }
+ 
+ .bckgrd {
+     background-color: rgb(255, 243, 205);
+ }
+ 
+ .puppy {
+     margin-top: 8vh;
+     height: 75vh;
+ }
+ 
+ .loginHome {
+     margin-right: 1rem;
+ }
+ 
+ .credentials {
+     background-color: rgb(248, 249, 250);
+     border: none;
+     box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+     margin: auto;
+     margin-top: 5rem;
+     align-items: center;
+     width: 20rem;
+     height: 20rem;
+ }
+ 
+ .teamcard {
+     background-color: rgb(248, 249, 250);
+     border: none;
+     box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+     margin: auto;
+     margin-top: 5rem;
+     align-items: center;
+     width: 20rem;
+     height: 15rem;
+ }
+ 
+ .crdtls {
+     margin-top: 3.5rem;
+ }
+ 
+ .bckgrd {
+     background-color: rgb(255, 243, 205);
+ }
+ 
+ .cardTitle {
+     margin-bottom: 4rem;
+ }
+ 
+ .card-title-sgn {
+     margin-bottom: 2rem;
+ }
+ 
+ .forms {
+     width: 15rem;
+ }
+ 
+ .loginButton {
+     margin-top: 3rem;
+     width: 5rem;
+ }
+ 
+ .createButton {
+     margin-top: 1.5rem;
+     width: 10rem;
+ }
+ 
+ .errorMessage {
+     margin: auto;
+     width: 20rem;
+ }
+ 
+ .teams-list{
+     margin-top: 5%;
+ }
+ .team-name-list{
+     padding: 15px;
+ }
+ 
+ 
+ .list-group-item {
+     margin-bottom: 3%;
+ }
+ 
+ .players-list {
+     width: 40%;
+     padding: auto;
+ }
+ 
+ .players-list-accordion-header {
+     padding: 3%;
+ }
+ 
+ .players-list-accordion-body {
+     padding: 3%;
+ }
+ .add-players {
+     padding-top: 4%
+ }
+ .add-players-form {
+     padding-top: 4%;
+ }
+ .create-team {
+     margin-top: 4%;
+ }
+ .create-team h2{
+     margin-bottom: 4%;
+ }
+ .create-team-list {
+     padding-bottom: 3%;
+     padding-right: 2%;
+ }
+ .create-team-button {
+     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+ }
+ 
+ .schedule-cards {
+     background-color: rgb(248, 249, 250);
+     border: none;
+     box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+     width: 22rem;
+     height: 15rem;
+     margin: 1rem;
+     align-items: center;
+ }
+ 
+ .secondButton {
+     background-color: rgb(255, 243, 205);
+     border: none;
+ }
+ 
+ .cardInsideSchedule {
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     align-items: center;
+ }
+ 
+ .teamName {
+     margin-bottom: 3rem;
+ }
+ 
+ .teamSchedule {
+     margin-bottom: 2rem;
+ }
+ 
+ .naming {
+     margin-top: 2rem;
+ }
+ 
+ .addButton {
+     width: 2.2rem;
+     height: 2.2rem;
+     background-color: rgb(255, 243, 205);
+     border: none;
+     border-radius: 1.1rem;
+ }
+ 
+ .teamCard {
+     background-color: rgb(248, 249, 250);
+     border: none;
+     box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+     margin-top: 4rem;
+     padding-top: 2rem;
+     width: auto;
+     height: 33rem;
+ }
+ 
+ .teamButtons {
+     display: flex;
+     flex-wrap: nowrap;
+     padding-top: 7rem;
+ }
+ 
+ .players-details {
+     background-color: rgb(248, 249, 250);
+     border: none;
+     box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+     height: 3rem;
+     padding-top: .3rem;
+     padding-left: 1rem;
+ 
+ }
+ 
+ .playerCard {
+     justify-content: center;
+     width: 12rem;
+ }
+ 
+ .home-carousel-text{
+     background-color: rgb(248, 249, 250);
+     border: none;
+     box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+     color: black;
+ }
+ 
+ .about-card {
+     background-color: rgb(248, 249, 250);
+     border: none;
+     box-shadow: 0 3px 10px rgb(0 0 0 / 0.2)
+ 
+ }
+ .playerName {
+     margin-right: 2rem;
+ }
+ 
+ .playerButton {
+     width: 10rem;
+     margin: 1rem;
+ }
+ 
+ .generateCard {
+     background-color: rgb(248, 249, 250);
+     border: none;
+     box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+     width: 20rem;
+     margin-top: 3rem;
+     margin-left: 8rem;
+     margin-right: 8rem;
+ }
+ 
+ .teamTitle {
+     margin-top: 1rem;
+     margin-bottom: 2rem;
+ }
+ 
+ .playerGenerated {
+     margin-bottom: 1.5rem;
+ }
+ 
+ .generateButton {
+     margin-top: 2rem;
+ }
+ 
+ .carouselCard {
+     box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+ }
