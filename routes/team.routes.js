@@ -94,7 +94,6 @@ router.post('/team/:id/delete', requireLogin, async (req, res) => {
 // Teams list route
 router.get('/teams', requireLogin, async (req, res) => {
   const teamsList = await Team.find({ owner: req.session.currentUser._id });
-
   //remove games older than today from the team.games array
   const dateNow = new Date();
   const changeFormat = dateNow.toISOString();
@@ -107,16 +106,14 @@ router.get('/teams', requireLogin, async (req, res) => {
   );
 
   for (let i = 0; i < teamsList.length; i++) {
-    const newArray = teamsList[i].games.filter(game => {
-      if (game.length) {
-        game.getTime() >= finalFormat.getTime();
-      }
-    });
+    const newArray = teamsList[i].games.filter(
+      game => game.getTime() >= finalFormat.getTime()
+    );
+
     console.log(teamsList[i].id);
     console.log(newArray);
     await Team.findByIdAndUpdate(teamsList[i].id, { games: newArray });
   }
-
   const finalList = JSON.parse(JSON.stringify(teamsList));
   finalList.forEach(team => {
     if (team.games[0]) {

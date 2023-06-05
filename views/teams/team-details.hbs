@@ -56,15 +56,15 @@
   <div class="mt-3 w-50 teamButtons">
     {{!-- Button and Modal to Generate Random teams --}}
     <!-- Button trigger modal -->
-    <button type="button" class="btn secondButton btn-warning text-warning-emphasis me-3 bi-shuffle" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    <button type="button" class="btn secondButton btn-warning text-warning-emphasis me-3 bi-shuffle" data-bs-toggle="modal" data-bs-target="#randomModal">
        Shuffle Teams
     </button>
     <!-- Modal Generate Random Team-->
-    <div class="modal fade" data-bs-backdrop="static" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" data-bs-backdrop="static" id="randomModal" tabindex="-1" aria-labelledby="randomModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalLabel">Select Players</h1>
+            <h1 class="modal-title fs-5" id="randomModalLabel">Select Players</h1>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
 
@@ -76,7 +76,7 @@
               {{/each}}
                 <div class="modal-footer">
                   <button type="button" class="btn btn-warning text-warning-emphasis secondButton" data-bs-dismiss="modal">Close</button>
-                  <button type="submit" class="btn btn-warning text-warning-emphasis secondButton" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal">Generate Teams</button>
+                  <button type="submit" class="btn btn-warning text-warning-emphasis secondButton" data-bs-target="#randomModalToggle2" data-bs-toggle="modal">Generate Teams</button>
                 </div>
             </form>
           </div>
@@ -97,14 +97,14 @@
       <div class="offcanvas-body">
         <div>
             {{#each starred}}
-              <div class="accordion pb-3" id="accordionExample">
+              <div class="accordion pb-3" id="accordionStareed">
                 <div class="accordion-item about-card">
                   <h2 class="accordion-header">
                     <button class="accordion-button collapsed players-list-accordion-header" type="button" data-bs-toggle="collapse" data-bs-target="#{{id}}" aria-expanded="false" aria-controls="{{this}}">
                     See players
                     </button>
                   </h2>
-                  <div id="{{id}}" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                  <div id="{{id}}" class="accordion-collapse collapse" data-bs-parent="#accordionStareed">
                     <div class="accordion-body players-list-accordion-body border border-warning-subtle">
                         <h6>Team one:</h6>
                         {{#each OneTeam}}
